@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Home"
+             BackgroundColor="#111111">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- ===== SCROLL CONTENT ===== -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="20">
+
+                <!-- HEADER -->
+                <Grid ColumnDefinitions="40,*,40,40">
+                    <Image Source="menu.png"
+                           WidthRequest="24"
+                           HeightRequest="24"
+                           VerticalOptions="Center"/>
+
+                    <Label Text="HarleyStore"
+                           Grid.Column="1"
+                           HorizontalOptions="Center"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="18"/>
+
+                    <Image Source="star.png"
+                           Grid.Column="2"
+                           WidthRequest="22"
+                           HeightRequest="22"
+                           VerticalOptions="Center"/>
+
+                    <Image Source="bike.png"
+                           Grid.Column="3"
+                           WidthRequest="22"
+                           HeightRequest="22"
+                           VerticalOptions="Center"/>
+                </Grid>
+
+                <!-- SEARCH -->
+                <Frame BackgroundColor="#2a2a2a"
+                       CornerRadius="30"
+                       Padding="15,10"
+                       HasShadow="False">
+
+                    <Grid ColumnDefinitions="30,*">
+                        <Image Source="search.png"
+                               WidthRequest="18"
+                               HeightRequest="18"
+                               VerticalOptions="Center"/>
+
+                        <Entry Grid.Column="1"
+                               Placeholder="Search motorcycles"
+                               TextColor="White"
+                               PlaceholderColor="#888888"
+                               BackgroundColor="Transparent"/>
+                    </Grid>
+                </Frame>
+
+                <!-- CATEGORIES CARD -->
+                <Frame BackgroundColor="#2a2a2a"
+                       CornerRadius="25"
+                       Padding="20"
+                       HasShadow="False">
+
+                    <VerticalStackLayout Spacing="15">
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Bike Categories"
+                                   TextColor="White"
+                                   FontAttributes="Bold"
+                                   FontSize="16"/>
+
+                            <Label Text="View all"
+                                   Grid.Column="1"
+                                   TextColor="#bbbbbb"
+                                   FontSize="12"/>
+                        </Grid>
+
+                        <FlexLayout Wrap="Wrap"
+                                    Direction="Row"
+                                    JustifyContent="Start"
+                                    AlignItems="Start"
+                                    BindableLayout.ItemsSource="{x:Null}">
+
+                            <!-- Pills -->
+                            <Frame BackgroundColor="#e5e5e5"
+                                   CornerRadius="20"
+                                   Padding="15,8"
+                                   Margin="5">
+                                <Label Text="Grand American Touring"
+                                       TextColor="#111"/>
+                            </Frame>
+
+                            <Frame BackgroundColor="#e5e5e5"
+                                   CornerRadius="20"
+                                   Padding="15,8"
+                                   Margin="5">
+                                <Label Text="Grand Touring"
+                                       TextColor="#111"/>
+                            </Frame>
+
+                            <Frame BackgroundColor="#e5e5e5"
+                                   CornerRadius="20"
+                                   Padding="15,8"
+                                   Margin="5">
+                                <Label Text="Trike"
+                                       TextColor="#111"/>
+                            </Frame>
+
+                            <Frame BackgroundColor="#e5e5e5"
+                                   CornerRadius="20"
+                                   Padding="15,8"
+                                   Margin="5">
+                                <Label Text="Cruiser"
+                                       TextColor="#111"/>
+                            </Frame>
+
+                            <Frame BackgroundColor="#e5e5e5"
+                                   CornerRadius="20"
+                                   Padding="15,8"
+                                   Margin="5">
+                                <Label Text="Sport"
+                                       TextColor="#111"/>
+                            </Frame>
+
+                            <Frame BackgroundColor="#e5e5e5"
+                                   CornerRadius="20"
+                                   Padding="15,8"
+                                   Margin="5">
+                                <Label Text="More..."
+                                       TextColor="#111"/>
+                            </Frame>
+
+                        </FlexLayout>
+
+                        <!-- Exclusive Deals -->
+                        <Frame BackgroundColor="#1f1f1f"
+                               CornerRadius="20"
+                               Padding="20"
+                               HasShadow="False">
+
+                            <VerticalStackLayout Spacing="10">
+                                <Label Text="Exclusive Deals"
+                                       TextColor="White"
+                                       FontAttributes="Bold"
+                                       FontSize="18"/>
+
+                                <Label Text="Check out our latest deals on bikes"
+                                       TextColor="#bbbbbb"
+                                       FontSize="14"/>
+
+                                <Label Text="See more ->"
+                                       TextColor="White"
+                                       FontAttributes="Bold"/>
+                            </VerticalStackLayout>
+                        </Frame>
+
+                        <!-- Indicators -->
+                        <HorizontalStackLayout HorizontalOptions="Center"
+                                               Spacing="6">
+                            <BoxView WidthRequest="6"
+                                     HeightRequest="6"
+                                     CornerRadius="3"
+                                     Color="White"/>
+                            <BoxView WidthRequest="6"
+                                     HeightRequest="6"
+                                     CornerRadius="3"
+                                     Color="#555"/>
+                            <BoxView WidthRequest="6"
+                                     HeightRequest="6"
+                                     CornerRadius="3"
+                                     Color="#555"/>
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- TOP MOTORCYCLES -->
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="Top Motorcycles"
+                           TextColor="White"
+                           FontAttributes="Bold"
+                           FontSize="16"/>
+
+                    <Label Text="Ver todo"
+                           Grid.Column="1"
+                           TextColor="#bbbbbb"
+                           FontSize="12"/>
+                </Grid>
+
+                <!-- Bike Cards -->
+                <HorizontalStackLayout Spacing="15">
+
+                    <!-- Card 1 -->
+                    <Frame BackgroundColor="#2a2a2a"
+                           CornerRadius="20"
+                           Padding="15"
+                           WidthRequest="170"
+                           HasShadow="False">
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <Image Source="bike1.png"
+                                   Aspect="AspectFit"
+                                   HeightRequest="100"/>
+
+                            <Grid ColumnDefinitions="*,Auto,Auto">
+                                <Label Text="$15,000"
+                                       TextColor="White"
+                                       FontAttributes="Bold"/>
+
+                                <Image Source="heart.png"
+                                       Grid.Column="1"
+                                       WidthRequest="18"
+                                       HeightRequest="18"
+                                       Margin="10,0"/>
+
+                                <Image Source="cart.png"
+                                       Grid.Column="2"
+                                       WidthRequest="18"
+                                       HeightRequest="18"/>
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Frame>
+
+                    <!-- Card 2 -->
+                    <Frame BackgroundColor="#2a2a2a"
+                           CornerRadius="20"
+                           Padding="15"
+                           WidthRequest="170"
+                           HasShadow="False">
+
+                        <VerticalStackLayout Spacing="10">
+
+                            <Image Source="bike2.png"
+                                   Aspect="AspectFit"
+                                   HeightRequest="100"/>
+
+                            <Grid ColumnDefinitions="*,Auto,Auto">
+                                <Label Text="$18,500"
+                                       TextColor="White"
+                                       FontAttributes="Bold"/>
+
+                                <Image Source="heart.png"
+                                       Grid.Column="1"
+                                       WidthRequest="18"
+                                       HeightRequest="18"
+                                       Margin="10,0"/>
+
+                                <Image Source="cart.png"
+                                       Grid.Column="2"
+                                       WidthRequest="18"
+                                       HeightRequest="18"/>
+                            </Grid>
+
+                        </VerticalStackLayout>
+                    </Frame>
+
+                </HorizontalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- ===== BOTTOM NAVIGATION ===== -->
+        <Grid Grid.Row="2"
+              BackgroundColor="#1a1a1a"
+              Padding="15"
+              ColumnDefinitions="*,*,*,*">
+
+            <Image Source="home.png"
+                   WidthRequest="22"
+                   HeightRequest="22"
+                   HorizontalOptions="Center"/>
+
+            <Image Source="list.png"
+                   Grid.Column="1"
+                   WidthRequest="22"
+                   HeightRequest="22"
+                   HorizontalOptions="Center"/>
+
+            <Image Source="heart.png"
+                   Grid.Column="2"
+                   WidthRequest="22"
+                   HeightRequest="22"
+                   HorizontalOptions="Center"/>
+
+            <Image Source="cart.png"
+                   Grid.Column="3"
+                   WidthRequest="22"
+                   HeightRequest="22"
+                   HorizontalOptions="Center"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

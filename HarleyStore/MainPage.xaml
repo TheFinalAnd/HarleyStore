@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.MainPage"
+             BackgroundColor="#111111">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30"
+                             Spacing="20"
+                             VerticalOptions="Center">
+
+            <!-- LOGO -->
+            <Image Source="harleystore_logo1.png"
+                   HeightRequest="150"
+                   HorizontalOptions="Center"
+                   Margin="0,40,0,10"/>
+
+            <!-- TITULO CORRECTO -->
+            <Label Text="HarleyStore"
+                   FontSize="34"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"/>
+
+            <Label Text="Join the ride today!"
+                   FontSize="16"
+                   TextColor="#bbbbbb"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,30"/>
+
+            <!-- EMAIL -->
+            <Label Text="Email"
+                   TextColor="White"
+                   FontAttributes="Bold"/>
+
+            <Grid HeightRequest="55">
+
+                <Frame BackgroundColor="#2a2a2a"
+                       CornerRadius="30"
+                       Padding="0"
+                       HasShadow="False">
+
+                    <Grid ColumnDefinitions="*,50">
+
+                        <Entry Placeholder="user@example.com"
+                               PlaceholderColor="#888888"
+                               TextColor="White"
+                               BackgroundColor="Transparent"
+                               VerticalOptions="Center"
+                               Margin="25,0,0,0"
+                               x:Name="EmailEntry"/>
+
+                        <!-- SVG CORREO -->
+                        <Image Source="mail.png"
+                               Grid.Column="1"
+                               WidthRequest="35"
+                               HeightRequest="35"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="0,0,10,0"
+                               x:Name="Mail"/>
+                    </Grid>
+
+                </Frame>
+            </Grid>
+
+            <!-- PASSWORD -->
+            <Label Text="Password"
+                   TextColor="White"
+                   FontAttributes="Bold"/>
+
+            <Grid HeightRequest="55">
+
+                <Frame BackgroundColor="#2a2a2a"
+                       CornerRadius="30"
+                       Padding="0"
+                       HasShadow="False">
+
+                    <Grid ColumnDefinitions="*,50">
+
+                        <Entry Placeholder="************"
+                               PlaceholderColor="#888888"
+                               TextColor="White"
+                               BackgroundColor="Transparent"
+                               IsPassword="True"
+                               Margin="25,0,0,0"
+                               VerticalOptions="Center"
+                               x:Name="PasswordEntry"
+                               Visual="Clear"/>
+
+                        <!-- SVG CANDADO -->
+                        <ImageButton Source="padlock_unlock.png"
+                                     Background="Transparent"
+                               Grid.Column="1"
+                               VerticalOptions="Center"
+                               HorizontalOptions="Center"
+                               Margin="0,0,10,0"
+                               x:Name="Password"/>
+                    </Grid>
+
+                </Frame>
+            </Grid>
+
+            <!-- BOTON -->
+            <Button Text="Sign In"
+                    BackgroundColor="#ff6a00"
+                    TextColor="Black"
+                    FontAttributes="Bold"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    Margin="0,30,0,10"
+                    x:Name="SignUp"/>
+
+            <!-- LOGIN -->
+            <HorizontalStackLayout HorizontalOptions="Center"
+                                   Spacing="5">
+
+                <Label Text="Don't have an account?"
+                       TextColor="#bbbbbb"/>
+
+                <Label Text="Sign up"
+                       TextColor="#ff6a00"
+                       FontAttributes="Bold"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
