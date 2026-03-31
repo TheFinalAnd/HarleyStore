@@ -1,0 +1,69 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.RegisterPage"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="28" Spacing="14">
+            <Label Text="Crear cuenta" FontSize="32" FontAttributes="Bold" TextColor="White" Margin="0,30,0,8"/>
+
+            <Label Text="Nombre" TextColor="White" />
+            <Entry x:Name="NombreEntry"
+       Style="{StaticResource EntryStyle}"
+       Placeholder="Tu nombre"
+       Completed="OnRegisterCompleted" />
+
+            <Label Text="Correo" TextColor="White" />
+            <Entry x:Name="CorreoEntry"
+       Style="{StaticResource EntryStyle}"
+       Placeholder="correo@ejemplo.com"
+       Keyboard="Email"
+       Completed="OnRegisterCompleted" />
+
+            <Label Text="Teléfono" TextColor="White" />
+            <Entry x:Name="TelefonoEntry"
+       Style="{StaticResource EntryStyle}"
+       Placeholder="8888-8888"
+       Keyboard="Telephone"
+       Completed="OnRegisterCompleted" />
+
+            <Label Text="Contraseña" TextColor="White" />
+            <Grid ColumnDefinitions="*,Auto">
+                <Entry x:Name="ContrasenaEntry"
+Placeholder="********"
+IsPassword="True"
+Style="{StaticResource EntryStyle}"
+Grid.Column="0"/>
+
+                <ImageButton x:Name="TogglePasswordButton"
+      Source="eye_off.png"
+      BackgroundColor="Transparent"
+      WidthRequest="30"
+      HeightRequest="30"
+      Margin="10,0"
+      Grid.Column="1"
+      Clicked="OnTogglePasswordClicked"/>
+            </Grid>
+
+            <Label Text="Confirmar contraseña" TextColor="White" />
+            <Grid ColumnDefinitions="*,Auto">
+                <Entry x:Name="ConfirmarEntry"
+Placeholder="********"
+IsPassword="True"
+Style="{StaticResource EntryStyle}"
+Grid.Column="0"/>
+
+                <ImageButton x:Name="ToggleConfirmPasswordButton"
+      Source="eye_off.png"
+      BackgroundColor="Transparent"
+      WidthRequest="30"
+      HeightRequest="30"
+      Margin="10,0"
+      Grid.Column="1"
+      Clicked="OnToggleConfirmPasswordClicked"/>
+            </Grid>
+
+            <Button Text="Sign up" Style="{StaticResource PrimaryButtonStyle}" Margin="0,12,0,0" Clicked="OnRegisterClicked"/>
+            <Button Text="Volver al login" BackgroundColor="Transparent" TextColor="White" Clicked="OnBackClicked"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

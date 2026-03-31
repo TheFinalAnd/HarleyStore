@@ -1,0 +1,138 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.ProfilePage"
+             Title="Perfil"
+             BackgroundColor="#111111">
+
+    <Grid>
+        <ScrollView>
+            <VerticalStackLayout Padding="22" Spacing="18">
+
+                <Grid ColumnDefinitions="*,Auto,Auto"
+                      ColumnSpacing="10"
+                      Margin="0,10,0,0">
+                    <Label x:Name="NombreHeaderLabel"
+                           Text="Usuario"
+                           TextColor="White"
+                           FontSize="30"
+                           FontAttributes="Bold"
+                           VerticalOptions="Center" />
+
+                    <Button Grid.Column="1"
+                            x:Name="EditarPerfilButton"
+                            Text="Editar Perfil"
+                            BackgroundColor="White"
+                            TextColor="Black"
+                            CornerRadius="20"
+                            Clicked="OnEditarClicked"/>
+
+                    <Button Grid.Column="2"
+                            Text="Cambiar contraseña"
+                            BackgroundColor="#FF7A00"
+                            TextColor="Black"
+                            CornerRadius="20"
+                            Clicked="OnMostrarCambioContrasenaClicked"/>
+                </Grid>
+
+                <Label Text="Datos Personales"
+                       TextColor="White"
+                       FontSize="28"
+                       FontAttributes="Bold" />
+
+                <Label Text="Nombre" TextColor="White"/>
+                <Entry x:Name="NombreEntry"
+                       Style="{StaticResource EntryStyle}"
+                       IsEnabled="False"/>
+
+                <Label Text="Correo Electrónico" TextColor="White"/>
+                <Entry x:Name="CorreoEntry"
+                       Style="{StaticResource EntryStyle}"
+                       IsEnabled="False"/>
+
+                <Label Text="Teléfono" TextColor="White"/>
+                <Entry x:Name="TelefonoEntry"
+                       Style="{StaticResource EntryStyle}"
+                       IsEnabled="False"/>
+
+                <Label Text="Preferencias de Notificación"
+                       TextColor="White"
+                       FontSize="26"
+                       FontAttributes="Bold" />
+
+                <Grid ColumnDefinitions="*,Auto"
+                      BackgroundColor="#2B2B2B"
+                      Padding="16"
+                      ColumnSpacing="10">
+                    <Label Text="Recibir notificaciones"
+                           TextColor="White"
+                           VerticalOptions="Center"/>
+                    <Switch Grid.Column="1"
+                            IsToggled="True"
+                            OnColor="#FF7A00"/>
+                </Grid>
+
+                <Label Text="Soporte al Cliente"
+                       TextColor="White"
+                       FontSize="26"
+                       FontAttributes="Bold" />
+
+                <Button Text="Contactar Soporte"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Clicked="OnSoporteClicked"/>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Grid x:Name="CambioPasswordOverlay"
+              IsVisible="False"
+              BackgroundColor="#99000000"
+              Padding="25">
+
+            <Frame VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   WidthRequest="360"
+                   BackgroundColor="#1E1E1E"
+                   BorderColor="#444444"
+                   CornerRadius="24"
+                   Padding="20"
+                   HasShadow="False">
+
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="Cambiar contraseña"
+                           TextColor="White"
+                           FontSize="24"
+                           FontAttributes="Bold" />
+
+                    <Entry x:Name="ContrasenaActualEntry"
+                           Placeholder="Contraseña actual"
+                           IsPassword="True"
+                           Style="{StaticResource EntryStyle}" />
+
+                    <Entry x:Name="NuevaContrasenaEntry"
+                           Placeholder="Nueva contraseña"
+                           IsPassword="True"
+                           Style="{StaticResource EntryStyle}" />
+
+                    <Entry x:Name="ConfirmarNuevaContrasenaEntry"
+                           Placeholder="Confirmar nueva contraseña"
+                           IsPassword="True"
+                           Style="{StaticResource EntryStyle}" />
+
+                    <Grid ColumnDefinitions="*,*"
+                          ColumnSpacing="10">
+                        <Button Text="Cancelar"
+                                Grid.Column="0"
+                                BackgroundColor="#444444"
+                                TextColor="White"
+                                CornerRadius="20"
+                                Clicked="OnCancelarCambioContrasenaClicked"/>
+
+                        <Button Text="Guardar"
+                                Grid.Column="1"
+                                Style="{StaticResource PrimaryButtonStyle}"
+                                Clicked="OnActualizarContrasenaClicked"/>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+        </Grid>
+    </Grid>
+</ContentPage>

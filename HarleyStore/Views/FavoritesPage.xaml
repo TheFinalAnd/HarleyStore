@@ -1,0 +1,41 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.FavoritesPage"
+             Title="Favoritos"
+             BackgroundColor="#111111">
+
+    <Grid Padding="18">
+        <CollectionView x:Name="FavoritosCollectionView">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Style="{StaticResource CardFrameStyle}" Margin="0,0,0,10">
+                        <HorizontalStackLayout Spacing="12">
+                            <Image Source="{Binding FotoMostrada}"
+                                   WidthRequest="100"
+                                   HeightRequest="90"
+                                   Aspect="AspectFit"
+                                   BackgroundColor="#1A1A1A"/>
+
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Modelo.NombreModelo}"
+                                       TextColor="White"
+                                       FontSize="26"
+                                       FontAttributes="Bold"/>
+                                <Label Text="{Binding Modelo.Marca.NombreMarca}"
+                                       TextColor="#CCCCCC"/>
+                                <Label Text="{Binding PrecioPublicado, StringFormat='${0:N0}'}"
+                                       TextColor="White"
+                                       FontAttributes="Bold"/>
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnMotoTapped"
+                                                  CommandParameter="{Binding .}" />
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>

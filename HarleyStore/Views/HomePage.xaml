@@ -1,0 +1,167 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.HomePage"
+             Shell.NavBarIsVisible="False"
+             BackgroundColor="#111111">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+
+            <Grid ColumnDefinitions="Auto,*,Auto,Auto" Margin="0,20,0,0">
+                <Button Text="☰"
+                        FontSize="24"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        Clicked="OnMenuClicked" />
+
+                <Label Grid.Column="1"
+                       Text="HarleyStore"
+                       TextColor="White"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center" />
+
+                <Button Grid.Column="2"
+                        Text="❤"
+                        FontSize="20"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        Clicked="OnFavoritesClicked" />
+
+                <Button Grid.Column="3"
+                        Text="👤"
+                        FontSize="20"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        Clicked="OnProfileClicked"
+                        Margin="10,0,0,0" />
+            </Grid>
+
+            <SearchBar x:Name="BuscarSearchBar"
+                       Placeholder="Buscar motocicletas"
+                       BackgroundColor="#2A2A2A"
+                       TextColor="White"
+                       PlaceholderColor="#999999"
+                       SearchButtonPressed="OnSearchButtonPressed" />
+
+            <Frame Style="{StaticResource CardFrameStyle}">
+                <VerticalStackLayout Spacing="14">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Text="Bike Categories"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               FontSize="24" />
+                        <Label Grid.Column="1"
+                               Text="Ver todo"
+                               TextColor="#DDDDDD"
+                               VerticalOptions="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnCategoriesTapped" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Grid>
+
+                    <FlexLayout Wrap="Wrap"
+                                Direction="Row"
+                                JustifyContent="SpaceBetween">
+                        <Button Text="Touring"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                CornerRadius="20"
+                                Clicked="OnCategoriesClicked" />
+                        <Button Text="Cruiser"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                CornerRadius="20"
+                                Clicked="OnCategoriesClicked" />
+                        <Button Text="Sport"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                CornerRadius="20"
+                                Clicked="OnCategoriesClicked" />
+                        <Button Text="Adventure"
+                                BackgroundColor="White"
+                                TextColor="Black"
+                                CornerRadius="20"
+                                Clicked="OnCategoriesClicked" />
+                    </FlexLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Button Text="Publicar moto"
+                        Grid.Column="0"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Clicked="OnPublishClicked" />
+
+                <Button Text="Mis motos"
+                        Grid.Column="1"
+                        Style="{StaticResource PrimaryButtonStyle}"
+                        Clicked="OnMyBikesClicked" />
+            </Grid>
+
+            <Grid ColumnDefinitions="*,Auto">
+                <Label Text="Top Motorcycles"
+                       TextColor="White"
+                       FontSize="24"
+                       FontAttributes="Bold" />
+                <Label Grid.Column="1"
+                       Text="Ver todo"
+                       TextColor="#DDDDDD"
+                       VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSeeAllTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </Grid>
+
+            <CollectionView x:Name="MotosCollectionView"
+                            SelectionMode="Single"
+                            SelectionChanged="OnMotoSelected">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical"
+                                     Span="2"
+                                     HorizontalItemSpacing="10"
+                                     VerticalItemSpacing="10" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Style="{StaticResource CardFrameStyle}"
+                               Padding="0"
+                               Margin="0">
+                            <Grid RowDefinitions="140,Auto">
+                                <Grid>
+                                    <Image Source="{Binding FotoMostrada}"
+                                           Aspect="AspectFit"
+                                           Margin="8"
+                                           BackgroundColor="#1A1A1A"
+                                           HorizontalOptions="Fill"
+                                           VerticalOptions="Fill" />
+                                </Grid>
+
+                                <VerticalStackLayout Grid.Row="1"
+                                                     Padding="12"
+                                                     Spacing="4">
+                                    <Label Text="{Binding Modelo.NombreModelo}"
+                                           TextColor="White"
+                                           FontAttributes="Bold"
+                                           LineBreakMode="TailTruncation" />
+                                    <Label Text="{Binding Modelo.Marca.NombreMarca}"
+                                           TextColor="#CCCCCC"
+                                           FontSize="12" />
+                                    <Label Text="{Binding PrecioPublicado, StringFormat='${0:N0}'}"
+                                           TextColor="White"
+                                           FontAttributes="Bold"
+                                           FontSize="18" />
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

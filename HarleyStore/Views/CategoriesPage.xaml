@@ -1,0 +1,24 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.CategoriesPage"
+             Title="Categorías">
+    <ScrollView>
+        <VerticalStackLayout Padding="22" Spacing="18">
+            <Label Text="Motorcycle" FontSize="34" FontAttributes="Bold" TextColor="White" Margin="0,10,0,10"/>
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="14" RowSpacing="14">
+                <Button Text="Latest" Grid.Row="0" Grid.Column="0" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Best Sellers" Grid.Row="0" Grid.Column="1" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Cruisers" Grid.Row="1" Grid.Column="0" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Touring" Grid.Row="1" Grid.Column="1" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Adventure" Grid.Row="2" Grid.Column="0" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Superbike" Grid.Row="2" Grid.Column="1" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Insurance" Grid.Row="3" Grid.Column="0" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Maintenance" Grid.Row="3" Grid.Column="1" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Repairs" Grid.Row="4" Grid.Column="0" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Reviews" Grid.Row="4" Grid.Column="1" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Support" Grid.Row="5" Grid.Column="0" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+                <Button Text="Deals" Grid.Row="5" Grid.Column="1" BackgroundColor="#2B2B2B" TextColor="White" CornerRadius="24"/>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

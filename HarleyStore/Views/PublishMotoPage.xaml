@@ -1,0 +1,73 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.PublishMotoPage"
+             Title="Publicar Moto">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+            <Label Text="Publicar Moto" TextColor="White" FontSize="34" FontAttributes="Bold" />
+
+            <Frame Style="{StaticResource CardFrameStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Subir Foto" TextColor="White" FontSize="28" FontAttributes="Bold"/>
+
+                    <Image x:Name="FotoPreview"
+               HeightRequest="180"
+               Aspect="AspectFill"
+               BackgroundColor="#1A1A1A" />
+
+                    <Button Text="Seleccionar foto"
+                Style="{StaticResource PrimaryButtonStyle}"
+                Clicked="OnSeleccionarFotoClicked"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame Style="{StaticResource CardFrameStyle}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Detalles de la Moto"
+               TextColor="White"
+               FontSize="28"
+               FontAttributes="Bold"/>
+
+                    <Label Text="Marca" TextColor="White"/>
+                    <Picker x:Name="MarcaPicker"
+        Title="Seleccione una marca"
+        TitleColor="#AAAAAA"
+        TextColor="White"
+        BackgroundColor="#2E2E2E"
+        SelectedIndexChanged="OnMarcaChanged"
+        ItemDisplayBinding="{Binding NombreMarca}" />
+
+                    <Label Text="Modelo" TextColor="White"/>
+                    <Picker x:Name="ModeloPicker"
+        Title="Seleccione un modelo"
+        TitleColor="#AAAAAA"
+        TextColor="White"
+        BackgroundColor="#2E2E2E"
+        ItemDisplayBinding="{Binding NombreModelo}" />
+
+                    <Label Text="Precio" TextColor="White"/>
+                    <Entry x:Name="PrecioEntry"
+               Style="{StaticResource EntryStyle}"
+               Keyboard="Numeric"
+               Placeholder="15000"/>
+
+                    <Label Text="Millas" TextColor="White"/>
+                    <Entry x:Name="MillasEntry"
+               Style="{StaticResource EntryStyle}"
+               Keyboard="Numeric"
+               Placeholder="5000"/>
+
+                    <Label Text="Descripción" TextColor="White"/>
+                    <Editor x:Name="DescripcionEditor"
+                BackgroundColor="#2E2E2E"
+                TextColor="White"
+                HeightRequest="130"
+                Placeholder="Describe tu moto..."
+                Completed="OnPublicarCompleted"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Button Text="Previsualizar / Publicar" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnPublicarClicked" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

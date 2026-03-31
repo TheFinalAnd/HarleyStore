@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using HarleyStore.Services;
 
 namespace HarleyStore
 {
@@ -7,6 +8,7 @@ namespace HarleyStore
         public static MauiApp CreateMauiApp()
         {
             var builder = MauiApp.CreateBuilder();
+
             builder
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
@@ -15,11 +17,17 @@ namespace HarleyStore
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+            builder.Services.AddSingleton<SessionService>();
+            builder.Services.AddSingleton<SupabaseService>();
+            builder.Services.AddSingleton<CryptoService>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
-            return builder.Build();
+            var app = builder.Build();
+            ServiceHelper.Services = app.Services;
+            return app;
         }
     }
 }

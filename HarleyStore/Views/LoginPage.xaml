@@ -1,0 +1,46 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.LoginPage"
+             Shell.NavBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="18">
+            <Image Source="logo.png" HeightRequest="140" WidthRequest="140" HorizontalOptions="Center" Margin="0,30,0,0"/>
+
+            <Label Text="HarleyStore" FontSize="34" FontAttributes="Bold" TextColor="White" HorizontalOptions="Center"/>
+            <Label Text="Join the ride today!" FontSize="18" TextColor="#D0D0D0" HorizontalOptions="Center" Margin="0,0,0,12"/>
+
+            <Entry x:Name="CorreoEntry"
+       Placeholder="user@example.com"
+       Style="{StaticResource EntryStyle}"
+       Completed="OnLoginCompleted" />
+
+            <Grid ColumnDefinitions="*,Auto">
+                <Entry x:Name="ContrasenaEntry"
+           Placeholder="********"
+           IsPassword="True"
+           Style="{StaticResource EntryStyle}"
+           Grid.Column="0"/>
+
+                <ImageButton x:Name="TogglePasswordButton"
+                 Source="eye_off.png"
+                 BackgroundColor="Transparent"
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 Margin="10,0"
+                 Grid.Column="1"
+                 Clicked="OnTogglePasswordClicked"/>
+            </Grid>
+
+            <Button Text="Log in" Style="{StaticResource PrimaryButtonStyle}" Clicked="OnLoginClicked" Margin="0,14,0,0"/>
+
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="8">
+                <Label Text="No tienes cuenta?" TextColor="#D0D0D0" />
+                <Label Text="Regístrate" TextColor="White" FontAttributes="Bold">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnRegisterTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

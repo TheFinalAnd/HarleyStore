@@ -1,0 +1,29 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.MotorcycleListPage"
+             Title="Motos">
+    <Grid RowDefinitions="Auto,*" Padding="18">
+        <VerticalStackLayout Spacing="10">
+            <Label Text="Filtrar por:" TextColor="White" FontSize="28" FontAttributes="Bold" Margin="0,10,0,0"/>
+            <SearchBar x:Name="BuscarSearchBar" Placeholder="Marca, modelo o descripción" SearchButtonPressed="OnSearchButtonPressed"/>
+        </VerticalStackLayout>
+
+        <CollectionView x:Name="MotosCollectionView" Grid.Row="1" Margin="0,14,0,0" SelectionChanged="OnMotoSelected">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Style="{StaticResource CardFrameStyle}" Margin="0,0,0,12">
+                        <Grid ColumnDefinitions="120,*" ColumnSpacing="12">
+                            <Image Source="{Binding FotoMostrada}" HeightRequest="100" WidthRequest="110" Aspect="AspectFill"/>
+                            <VerticalStackLayout Grid.Column="1" Spacing="6">
+                                <Label Text="{Binding Modelo.Marca.NombreMarca}" TextColor="#BBBBBB" FontSize="12"/>
+                                <Label Text="{Binding Modelo.NombreModelo}" TextColor="White" FontSize="28" FontAttributes="Bold"/>
+                                <Label Text="{Binding PrecioPublicado, StringFormat='${0:N0}'}" TextColor="White" FontAttributes="Bold" FontSize="20"/>
+                                <Label Text="{Binding Descripcion}" TextColor="#D0D0D0" MaxLines="2" LineBreakMode="TailTruncation"/>
+                            </VerticalStackLayout>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
