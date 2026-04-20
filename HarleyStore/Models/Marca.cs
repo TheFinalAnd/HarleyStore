@@ -7,6 +7,9 @@ namespace HarleyStore.Models
 {
     public class Marca
     {
+        /// <summary>
+        /// Entidad que representa la marca de una motocicleta.
+        /// </summary>
         [JsonProperty("id_marca")]
         public long IdMarca { get; set; }
 

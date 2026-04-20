@@ -7,6 +7,12 @@ namespace HarleyStore.Models
 {
     public class Oferta
     {
+        [JsonProperty("id_oferta")]
+        public long IdOferta { get; set; }
+
+        /// <summary>
+        /// Representa una oferta realizada por un usuario sobre una moto.
+        /// </summary>
         [JsonProperty("id_moto")]
         public long IdMoto { get; set; }
 
@@ -23,13 +29,13 @@ namespace HarleyStore.Models
         public short? CantidadCuotas { get; set; }
 
         [JsonProperty("prima")]
-        public short? Prima { get; set; }
+        public float? Prima { get; set; }
 
         [JsonProperty("interes")]
-        public short? Interes { get; set; }
+        public float? Interes { get; set; }
 
         [JsonProperty("it_estado")]
-        public long ItEstado { get; set; }
+        public long IdEstado { get; set; }
 
         [JsonProperty("fecha")]
         public DateTime Fecha { get; set; }

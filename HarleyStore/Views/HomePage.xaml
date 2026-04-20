@@ -151,10 +151,10 @@
                                     <Label Text="{Binding Modelo.Marca.NombreMarca}"
                                            TextColor="#CCCCCC"
                                            FontSize="12" />
-                                    <Label Text="{Binding PrecioPublicado, StringFormat='${0:N0}'}"
-                                           TextColor="White"
-                                           FontAttributes="Bold"
-                                           FontSize="18" />
+                                    <Label Text="{Binding PrecioMostrado, StringFormat='${0:N0}'}"
+       TextColor="White"
+       FontAttributes="Bold"
+       FontSize="18" />
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>

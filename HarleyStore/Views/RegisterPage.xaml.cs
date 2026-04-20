@@ -11,8 +11,8 @@ namespace HarleyStore.Views
         public RegisterPage()
         {
             InitializeComponent();
-            _supabaseService = new SupabaseService();
-            _cryptoService = new CryptoService();
+            _supabaseService = ServiceHelper.GetService<SupabaseService>();
+            _cryptoService = ServiceHelper.GetService<CryptoService>();
         }
 
         private void OnRegisterCompleted(object sender, EventArgs e)
@@ -106,6 +106,19 @@ namespace HarleyStore.Views
                 }
 
                 await DisplayAlertAsync("Éxito", "Usuario registrado correctamente.", "OK");
+
+                // Obtener el usuario recién creado para establecer la sesión.
+                var usuarios = await _supabaseService.GetUsuariosAsync($"?correo=eq.{Uri.EscapeDataString(usuario.Correo)}&select=*");
+                var creado = usuarios.FirstOrDefault();
+                if (creado != null)
+                {
+                    // Establecer sesión persistente y navegar a home.
+                    var sessionService = ServiceHelper.GetService<SessionService>();
+                    await sessionService.SetUsuarioAsync(creado);
+                    await Shell.Current.GoToAsync("//home");
+                    return;
+                }
+
                 await Shell.Current.GoToAsync("//login");
             }
             catch (Exception ex)

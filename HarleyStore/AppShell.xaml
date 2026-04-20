@@ -11,4 +11,7 @@
     <ShellContent Route="login" ContentTemplate="{DataTemplate views:LoginPage}" />
     <ShellContent Route="register" ContentTemplate="{DataTemplate views:RegisterPage}" />
     <ShellContent Route="home" ContentTemplate="{DataTemplate views:HomePage}" />
+    <ShellContent Route="notifications" ContentTemplate="{DataTemplate views:NotificationsPage}" />
+    <ShellContent Route="myoffers" ContentTemplate="{DataTemplate views:MyOffersPage}" />
+    <ShellContent Route="mypayments" ContentTemplate="{DataTemplate views:MyPaymentsPage}" />
 </Shell>

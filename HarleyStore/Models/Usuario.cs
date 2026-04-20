@@ -7,6 +7,15 @@ namespace HarleyStore.Models
 {
     public class Usuario
     {
+        /// <summary>
+        /// Representa la entidad Usuario tal y como se recibe/manda a la API.
+        /// </summary>
+        /// <remarks>
+        /// - Campos serializados con <see cref="JsonProperty"/> para mantener
+        ///   compatibilidad con el esquema REST.
+        /// - La contraseña se maneja como hash en la app cliente; no procesar
+        ///   contraseñas en claro en memoria más tiempo del necesario.
+        /// </remarks>
         [JsonProperty("id_usuario")]
         public long IdUsuario { get; set; }
 

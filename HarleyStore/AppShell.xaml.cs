@@ -1,4 +1,5 @@
-﻿namespace HarleyStore
+﻿using System;
+namespace HarleyStore
 {
     public partial class AppShell : Shell
     {
@@ -14,6 +15,10 @@
             Routing.RegisterRoute(nameof(Views.FavoritesPage), typeof(Views.FavoritesPage));
             Routing.RegisterRoute(nameof(Views.PublishMotoPage), typeof(Views.PublishMotoPage));
             Routing.RegisterRoute(nameof(Views.ProfilePage), typeof(Views.ProfilePage));
+            Routing.RegisterRoute(nameof(Views.NotificationsPage), typeof(Views.NotificationsPage));
+            Routing.RegisterRoute(nameof(Views.OfferPage), typeof(Views.OfferPage));
+            Routing.RegisterRoute(nameof(Views.MyOffersPage), typeof(Views.MyOffersPage));
+            Routing.RegisterRoute(nameof(Views.MyPaymentsPage), typeof(Views.MyPaymentsPage));
         }
     }
 }

@@ -1,0 +1,296 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:HarleyStore.Models"
+             x:Class="HarleyStore.Views.MyOffersPage"
+             Title="Mis ofertas"
+             BackgroundColor="#111111">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="12" Spacing="12">
+
+			<Label Text="Mis ofertas"
+                   TextColor="White"
+                   FontSize="24"
+                   FontAttributes="Bold" />
+
+			<Button Text="Agregar nueva"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Clicked="OnAgregarClicked" />
+
+			<Label Text="Ofertas que hice"
+                   TextColor="#CCCCCC" />
+
+			<CollectionView x:Name="OfertasQueHiceCollection"
+                            SelectionMode="Single"
+                            SelectionChanged="OnOfertaSeleccionada">
+				<CollectionView.ItemTemplate>
+					<DataTemplate x:DataType="models:OfertaViewModel">
+						<Frame Padding="8"
+                               CornerRadius="8"
+                               Margin="0,6"
+                               BackgroundColor="#1A1A1A">
+							<Grid ColumnDefinitions="80,*,Auto"
+                                  ColumnSpacing="10">
+
+								<Image Grid.Column="0"
+                                       Source="{Binding MotoPreview}"
+                                       WidthRequest="80"
+                                       HeightRequest="60"
+                                       Aspect="AspectFill" />
+
+								<VerticalStackLayout Grid.Column="1"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     Spacing="2">
+									<Label Text="{Binding MotoNombre}"
+                                           TextColor="White"
+                                           FontAttributes="Bold" />
+
+									<Label Text="{Binding PrecioUnits, StringFormat='${0:N0}'}"
+                                           TextColor="#CCCCCC" />
+
+									<Label Text="{Binding EstadoTexto}"
+                                           TextColor="{Binding EstadoColor}"
+                                           FontAttributes="Bold"
+                                           FontSize="12" />
+								</VerticalStackLayout>
+
+								<HorizontalStackLayout Grid.Column="2"
+                                                       Spacing="6"
+                                                       VerticalOptions="Center">
+									<Button Text="✎"
+        FontSize="18"
+        WidthRequest="40"
+        HeightRequest="40"
+        CornerRadius="20"
+        BackgroundColor="#2E8B57"
+        TextColor="White"
+        Clicked="OnEditOfferInlineClicked" />
+
+									<Button Text="🗑"
+											FontSize="16"
+											WidthRequest="40"
+											HeightRequest="40"
+											CornerRadius="20"
+											BackgroundColor="#8B0000"
+											TextColor="White"
+											Clicked="OnDeleteOfferInlineClicked" />
+								</HorizontalStackLayout>
+							</Grid>
+						</Frame>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+
+			<Frame x:Name="DetailsFrame"
+                   IsVisible="False"
+                   Padding="12"
+                   Margin="0,12"
+                   CornerRadius="8"
+                   BackgroundColor="#1A1A1A">
+				<VerticalStackLayout Spacing="8">
+
+					<HorizontalStackLayout HorizontalOptions="Fill" Spacing="8">
+						<Label Text="Detalle de oferta"
+                               TextColor="White"
+                               FontAttributes="Bold"
+                               HorizontalOptions="StartAndExpand" />
+
+						<Button Text="Cerrar"
+                                Clicked="OnCloseDetailsClicked"
+                                BackgroundColor="#444444"
+                                TextColor="White" />
+					</HorizontalStackLayout>
+
+					<Label x:Name="DetailMotoLabel"
+                           TextColor="White"
+                           FontAttributes="Bold" />
+
+					<Image x:Name="DetailMotoImage"
+                           HeightRequest="140"
+                           Aspect="AspectFill" />
+
+					<Label x:Name="DetailDescripcionLabel"
+                           TextColor="#CCCCCC" />
+
+					<Label x:Name="DetailInteresLabel"
+                           TextColor="#CCCCCC" />
+
+					<Label x:Name="DetailMontosLabel"
+                           TextColor="#CCCCCC" />
+
+					<Label x:Name="DetailEstadoLabel"
+                           TextColor="Orange"
+                           FontAttributes="Bold"
+                           FontSize="13" />
+
+					<Label Text="Pagos"
+                           TextColor="White"
+                           FontAttributes="Bold" />
+
+					<CollectionView x:Name="PaymentsCollection"
+                                    SelectionMode="Single"
+                                    HeightRequest="180"
+                                    SelectionChanged="OnPaymentSelected">
+						<CollectionView.ItemTemplate>
+							<DataTemplate>
+								<Frame Padding="6"
+                                       CornerRadius="6"
+                                       Margin="0,4"
+                                       BackgroundColor="#252525">
+									<HorizontalStackLayout Spacing="8">
+										<Label Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}"
+                                               TextColor="#CCCCCC" />
+
+										<Label Text="{Binding Monto, StringFormat='${0:N3}'}"
+                                               TextColor="#CCCCCC" />
+
+										<Label Text="{Binding Aceptada, StringFormat='Confirmado: {0}'}"
+                                               TextColor="#CCCCCC" />
+									</HorizontalStackLayout>
+								</Frame>
+							</DataTemplate>
+						</CollectionView.ItemTemplate>
+					</CollectionView>
+
+					<HorizontalStackLayout Spacing="8">
+						<Button x:Name="ConfirmPaymentButton"
+                                Text="Confirmar pago seleccionado"
+                                Clicked="OnConfirmPaymentClicked"
+                                BackgroundColor="#1E90FF"
+                                TextColor="White"
+                                IsVisible="False" />
+					</HorizontalStackLayout>
+
+					<StackLayout x:Name="EditPanel"
+                                 IsVisible="False"
+                                 Spacing="8"
+                                 Padding="6">
+						<Label Text="Editar oferta"
+                               TextColor="White"
+                               FontAttributes="Bold" />
+
+						<Label Text="Precio (unidades)"
+                               TextColor="#CCCCCC" />
+
+						<Entry x:Name="PrecioEditEntry"
+                               Keyboard="Numeric"
+                               TextChanged="OnPrecioEditChanged" />
+
+						<HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+							<Label Text="Solicitar cuotas"
+                                   VerticalOptions="Center"
+                                   TextColor="#CCCCCC" />
+							<Switch x:Name="SolicitaCuotasEditSwitch"
+                                    Toggled="OnSolicitaCuotasEditToggled" />
+						</HorizontalStackLayout>
+
+						<Label Text="Cantidad de cuotas"
+                               TextColor="#CCCCCC" />
+						<Entry x:Name="CantidadCuotasEditEntry"
+                               Keyboard="Numeric"
+                               IsEnabled="False" />
+
+						<Label Text="Prima (unidades)"
+                               TextColor="#CCCCCC" />
+						<Entry x:Name="PrimaEditEntry"
+                               Keyboard="Numeric"
+                               TextChanged="OnPrimaEditChanged" />
+
+						<Label Text="Interés (%)"
+                               TextColor="#CCCCCC" />
+						<Entry x:Name="InteresEditEntry" />
+
+						<HorizontalStackLayout Spacing="8">
+							<Button Text="Guardar"
+                                    Clicked="OnSaveEditClicked"
+                                    Style="{StaticResource PrimaryButtonStyle}" />
+
+							<Button Text="Cancelar"
+                                    Clicked="OnCancelEditClicked"
+                                    BackgroundColor="#444444"
+                                    TextColor="White" />
+						</HorizontalStackLayout>
+					</StackLayout>
+
+					<StackLayout x:Name="RegisterPaymentPanel"
+                                 Spacing="8"
+                                 Padding="6"
+                                 IsVisible="False">
+						<Label Text="Registrar abono (unidades)"
+                               TextColor="#CCCCCC" />
+						<Entry x:Name="PaymentAmountEntry"
+                               Keyboard="Numeric" />
+						<Button Text="Registrar abono"
+                                Clicked="OnRegisterPaymentClicked"
+                                Style="{StaticResource PrimaryButtonStyle}" />
+					</StackLayout>
+				</VerticalStackLayout>
+			</Frame>
+
+			<Label Text="Ofertas que me hicieron"
+                   TextColor="#CCCCCC" />
+
+			<CollectionView x:Name="OfertasRecibidasCollection"
+                            SelectionMode="Single"
+                            SelectionChanged="OnOfertaRecibidaSeleccionada">
+				<CollectionView.ItemTemplate>
+					<DataTemplate x:DataType="models:OfertaViewModel">
+						<Frame Padding="8"
+                               CornerRadius="8"
+                               Margin="0,6"
+                               BackgroundColor="#1A1A1A">
+							<Grid ColumnDefinitions="80,*,Auto"
+                                  ColumnSpacing="10">
+
+								<Image Grid.Column="0"
+                                       Source="{Binding MotoPreview}"
+                                       WidthRequest="80"
+                                       HeightRequest="60"
+                                       Aspect="AspectFill" />
+
+								<VerticalStackLayout Grid.Column="1"
+                                                     HorizontalOptions="FillAndExpand"
+                                                     Spacing="2">
+									<Label Text="{Binding MotoNombre}"
+                                           TextColor="White"
+                                           FontAttributes="Bold" />
+
+									<Label Text="{Binding PrecioUnits, StringFormat='${0:N0}'}"
+                                           TextColor="#CCCCCC" />
+
+									<Label Text="{Binding EstadoTexto}"
+                                           TextColor="{Binding EstadoColor}"
+                                           FontAttributes="Bold"
+                                           FontSize="12" />
+								</VerticalStackLayout>
+
+								<HorizontalStackLayout Grid.Column="2"
+                                                       Spacing="6"
+                                                       VerticalOptions="Center">
+									<Button Text="✔"
+        FontSize="18"
+        WidthRequest="40"
+        HeightRequest="40"
+        CornerRadius="20"
+        BackgroundColor="Green"
+        TextColor="White"
+        Clicked="OnApproveInlineClicked" />
+
+									<Button Text="✖"
+											FontSize="18"
+											WidthRequest="40"
+											HeightRequest="40"
+											CornerRadius="20"
+											BackgroundColor="Red"
+											TextColor="White"
+											Clicked="OnRejectInlineClicked" />
+								</HorizontalStackLayout>
+							</Grid>
+						</Frame>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>

@@ -17,7 +17,7 @@
                             <VerticalStackLayout Grid.Column="1" Spacing="6">
                                 <Label Text="{Binding Modelo.Marca.NombreMarca}" TextColor="#BBBBBB" FontSize="12"/>
                                 <Label Text="{Binding Modelo.NombreModelo}" TextColor="White" FontSize="28" FontAttributes="Bold"/>
-                                <Label Text="{Binding PrecioPublicado, StringFormat='${0:N0}'}" TextColor="White" FontAttributes="Bold" FontSize="20"/>
+                                <Label Text="{Binding PrecioPublicado, Converter={StaticResource MilesToUnitsConverter}, StringFormat='${0:N0}'}" TextColor="White" FontAttributes="Bold" FontSize="20"/>
                                 <Label Text="{Binding Descripcion}" TextColor="#D0D0D0" MaxLines="2" LineBreakMode="TailTruncation"/>
                             </VerticalStackLayout>
                         </Grid>

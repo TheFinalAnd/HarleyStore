@@ -7,6 +7,9 @@ namespace HarleyStore.Models
 {
     public class Modelo
     {
+        /// <summary>
+        /// Entidad que representa un modelo concreto de motocicleta.
+        /// </summary>
         [JsonProperty("id_modelo")]
         public long IdModelo { get; set; }
 

@@ -17,6 +17,30 @@ namespace HarleyStore.Views
             _sessionService = ServiceHelper.GetService<SessionService>();
         }
 
+        private async Task IrAMisOfertasAsync()
+        {
+            if (_sessionService.UsuarioActual == null)
+            {
+                await DisplayAlertAsync("Sesión", "Debes iniciar sesión.", "OK");
+                await Shell.Current.GoToAsync("//login");
+                return;
+            }
+
+            await Shell.Current.GoToAsync(nameof(MyOffersPage));
+        }
+
+        private async Task IrAMisPagosAsync()
+        {
+            if (_sessionService.UsuarioActual == null)
+            {
+                await DisplayAlertAsync("Sesión", "Debes iniciar sesión.", "OK");
+                await Shell.Current.GoToAsync("//login");
+                return;
+            }
+
+            await Shell.Current.GoToAsync(nameof(MyPaymentsPage));
+        }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();
@@ -161,7 +185,8 @@ namespace HarleyStore.Views
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(CategoriesPage));
+                // Eliminado filtrado por categorías (no funciona); navegar a lista general.
+                await Shell.Current.GoToAsync(nameof(MotorcycleListPage));
             }
             catch (Exception ex)
             {
@@ -173,7 +198,8 @@ namespace HarleyStore.Views
         {
             try
             {
-                await Shell.Current.GoToAsync(nameof(CategoriesPage));
+                // Eliminado filtrado por categorías (no funciona); navegar a lista general.
+                await Shell.Current.GoToAsync(nameof(MotorcycleListPage));
             }
             catch (Exception ex)
             {
@@ -215,6 +241,8 @@ namespace HarleyStore.Views
                     "Favoritos",
                     "Publicar moto",
                     "Mis motos",
+                    "Mis ofertas",
+                    "Mis pagos",
                     "Cerrar sesión");
 
                 switch (action)
@@ -235,8 +263,16 @@ namespace HarleyStore.Views
                         await IrAMisMotosAsync();
                         break;
 
+                    case "Mis ofertas":
+                        await IrAMisOfertasAsync();
+                        break;
+
+                    case "Mis pagos":
+                        await IrAMisPagosAsync();
+                        break;
+
                     case "Cerrar sesión":
-                        _sessionService.Logout();
+                        await _sessionService.LogoutAsync();
                         await Shell.Current.GoToAsync("//login");
                         break;
                 }

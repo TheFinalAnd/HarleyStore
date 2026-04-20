@@ -4,6 +4,17 @@ namespace HarleyStore.Models
 {
     public class Moto
     {
+        /// <summary>
+        /// Representa una motocicleta publicada en la plataforma.
+        /// </summary>
+        /// <remarks>
+        /// - Las propiedades están mapeadas a la representación JSON/REST que
+        ///   expone la API (nombres en snake_case) mediante <see cref="JsonProperty"/>.
+        /// - <see cref="Modelo"/> contiene datos expandidos (join) cargados por la API
+        ///   para evitar llamadas adicionales desde la UI.
+        /// - <see cref="FotoMostrada"/> expone una URL segura para mostrarse en la UI
+        ///   devolviendo una imagen por defecto cuando no hay URL disponible.
+        /// </remarks>
         [JsonProperty("id_moto")]
         public long IdMoto { get; set; }
 
@@ -15,6 +26,9 @@ namespace HarleyStore.Models
 
         [JsonProperty("precio_publicado")]
         public float PrecioPublicado { get; set; }
+
+        // Añade esta línea:
+        public float PrecioMostrado => PrecioPublicado * 1000;
 
         [JsonProperty("descripcion")]
         public string Descripcion { get; set; } = string.Empty;
@@ -30,6 +44,13 @@ namespace HarleyStore.Models
 
         [JsonProperty("foto_url")]
         public string? FotoUrl { get; set; }
+
+        // Nuevos campos: prima mínima (almacenada como múltiplo de 1000) e interés mínimo (% por cuota)
+        [JsonProperty("min_prima")]
+        public float? MinPrima { get; set; }
+
+        [JsonProperty("min_interes")]
+        public float? MinInteres { get; set; }
 
         [JsonProperty("Modelo")]
         public ModeloExpandido? Modelo { get; set; }
@@ -63,5 +84,7 @@ namespace HarleyStore.Models
 
         [JsonProperty("Motor")]
         public Motor? Motor { get; set; }
+
+
     }
 }

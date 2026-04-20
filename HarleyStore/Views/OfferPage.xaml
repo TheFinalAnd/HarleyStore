@@ -1,0 +1,77 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.OfferPage"
+             Title="Crear oferta"
+             BackgroundColor="#111111">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="16" Spacing="12">
+
+			<Label Text="Nueva oferta"
+                   TextColor="White"
+                   FontSize="24"
+                   FontAttributes="Bold" />
+
+			<Label Text="Moto"
+                   TextColor="#CCCCCC" />
+
+			<Picker x:Name="MotoPicker"
+                    Title="Selecciona una moto"
+                    TitleColor="#AAAAAA"
+                    TextColor="White"
+                    BackgroundColor="#2E2E2E"
+                    SelectedIndexChanged="OnMotoPickerChanged"
+                    ItemDisplayBinding="{Binding Descripcion}" />
+
+			<Label x:Name="MotoSeleccionadaLabel"
+                   TextColor="White"
+                   FontAttributes="Bold" />
+
+			<Label x:Name="MinPrimaLabel"
+                   TextColor="#CCCCCC" />
+
+			<Label Text="Precio ofertado (unidades)"
+                   TextColor="#CCCCCC" />
+			<Entry x:Name="PrecioEntry"
+                   Keyboard="Numeric"
+                   TextChanged="OnInputChanged" />
+
+			<HorizontalStackLayout Spacing="8" VerticalOptions="Center">
+				<Label Text="Solicitar cuotas"
+                       TextColor="#CCCCCC"
+                       VerticalOptions="Center" />
+				<Switch x:Name="SolicitaCuotasSwitch"
+                        Toggled="OnSolicitaCuotasToggled" />
+			</HorizontalStackLayout>
+
+			<VerticalStackLayout x:Name="CuotasInfoLayout"
+                                 IsVisible="False"
+                                 Spacing="10">
+				<Label Text="Cantidad de cuotas"
+                       TextColor="#CCCCCC" />
+				<Entry x:Name="CantidadCuotasEntry"
+                       Keyboard="Numeric"
+                       TextChanged="OnInputChanged" />
+
+				<Label Text="Prima (unidades)"
+                       TextColor="#CCCCCC" />
+				<Entry x:Name="PrimaEntry"
+                       Keyboard="Numeric"
+                       TextChanged="OnInputChanged" />
+
+				<Label Text="Interés (%)"
+                       TextColor="#CCCCCC" />
+				<Entry x:Name="InteresEntry"
+                       IsEnabled="False" />
+			</VerticalStackLayout>
+
+			<Label x:Name="PrecioPorCuotaLabel"
+                   TextColor="White"
+                   FontAttributes="Bold" />
+
+			<Button Text="Enviar oferta"
+                    Style="{StaticResource PrimaryButtonStyle}"
+                    Clicked="OnEnviarClicked" />
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>

@@ -36,16 +36,23 @@
                             ItemDisplayBinding="{Binding NombreModelo}" />
 
                     <Label Text="Precio" TextColor="White"/>
+                    <Label Text="Precio (miles)" TextColor="White" />
                     <Entry x:Name="PrecioEntry"
-                           Style="{StaticResource EntryStyle}"
-                           Keyboard="Numeric"
-                           Placeholder="15000"/>
+               Style="{StaticResource EntryStyle}"
+               Keyboard="Numeric"
+               Placeholder="15"/>
 
                     <Label Text="Millas" TextColor="White"/>
                     <Entry x:Name="MillasEntry"
                            Style="{StaticResource EntryStyle}"
                            Keyboard="Numeric"
                            Placeholder="5000"/>
+
+                    <Label Text="Prima mínima (miles)" TextColor="White" />
+                    <Entry x:Name="MinPrimaEntry" Style="{StaticResource EntryStyle}" Keyboard="Numeric" Placeholder="3" />
+
+                    <Label Text="Interés mínimo (%)" TextColor="White" />
+                    <Entry x:Name="MinInteresEntry" Style="{StaticResource EntryStyle}" Keyboard="Numeric" Placeholder="1.5" />
 
                     <Label Text="Descripción" TextColor="White"/>
                     <Editor x:Name="DescripcionEditor"

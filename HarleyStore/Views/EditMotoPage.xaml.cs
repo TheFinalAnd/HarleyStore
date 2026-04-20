@@ -48,7 +48,7 @@ namespace HarleyStore.Views
         {
             base.OnAppearing();
 
-            if (_sessionService.UsuarioActual == null)
+            if (_sessionService == null || _sessionService.UsuarioActual == null)
             {
                 await DisplayAlertAsync("Sesión", "Debes iniciar sesión.", "OK");
                 await Shell.Current.GoToAsync("//login");
@@ -86,7 +86,8 @@ namespace HarleyStore.Views
             if (_moto == null)
                 return;
 
-            PrecioEntry.Text = _moto.PrecioPublicado.ToString();
+            // Mostrar valores en unidades para que el usuario edite (la base usa 'miles')
+            PrecioEntry.Text = (_moto.PrecioPublicado * 1000f).ToString();
             MillasEntry.Text = _moto.Millas.ToString();
             DescripcionEditor.Text = _moto.Descripcion;
             FotoPreview.Source = _moto.FotoMostrada;
@@ -111,6 +112,13 @@ namespace HarleyStore.Views
                     ModeloPicker.SelectedItem = modeloActual;
                 }
             }
+
+            // Mostrar condiciones financieras en las unidades que el usuario entiende (miles y porcentaje)
+            if (_moto.MinPrima.HasValue)
+                MinPrimaEntry.Text = (_moto.MinPrima.Value * 1000f).ToString();
+
+            if (_moto.MinInteres.HasValue)
+                MinInteresEntry.Text = _moto.MinInteres.Value.ToString();
         }
 
         private void OnMarcaChanged(object sender, EventArgs e)
@@ -157,7 +165,7 @@ namespace HarleyStore.Views
                     return;
                 }
 
-                if (_sessionService.UsuarioActual == null)
+                if (_sessionService == null || _sessionService.UsuarioActual == null)
                 {
                     await DisplayAlertAsync("Sesión", "Debes iniciar sesión.", "OK");
                     return;
@@ -189,6 +197,19 @@ namespace HarleyStore.Views
                     return;
                 }
 
+                // Validar que se establezcan los mínimos de prima e interés
+                if (string.IsNullOrWhiteSpace(MinPrimaEntry.Text) || !float.TryParse(MinPrimaEntry.Text.Trim(), out var minPrimaUnits) || minPrimaUnits < 0)
+                {
+                    await DisplayAlertAsync("Validación", "Ingresa una prima mínima válida (en miles).", "OK");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(MinInteresEntry.Text) || !float.TryParse(MinInteresEntry.Text.Trim(), out var minInteres) || minInteres < 0)
+                {
+                    await DisplayAlertAsync("Validación", "Ingresa un porcentaje de interés mínimo válido.", "OK");
+                    return;
+                }
+
                 string? nuevaFotoUrl = _moto.FotoUrl;
 
                 if (_fotoSeleccionada != null)
@@ -209,10 +230,15 @@ namespace HarleyStore.Views
                 }
 
                 _moto.IdModelo = modeloSeleccionado.IdModelo;
-                _moto.PrecioPublicado = float.Parse(PrecioEntry.Text.Trim());
+                // Precio: usuario ingresa unidades, la base espera 'miles' -> dividir por 1000
+                _moto.PrecioPublicado = float.Parse(PrecioEntry.Text.Trim()) / 1000f;
                 _moto.Millas = float.Parse(MillasEntry.Text.Trim());
                 _moto.Descripcion = DescripcionEditor.Text.Trim();
                 _moto.FotoUrl = nuevaFotoUrl;
+
+                // Campos opcionales de condiciones financieras (ya validados obligatorios más arriba)
+                _moto.MinPrima = minPrimaUnits / 1000f;
+                _moto.MinInteres = minInteres;
 
                 var ok = await _supabaseService.ActualizarMotoAsync(_moto);
 

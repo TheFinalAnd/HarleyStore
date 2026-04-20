@@ -7,6 +7,9 @@ namespace HarleyStore.Models
 {
     public class Estado
     {
+        /// <summary>
+        /// Catálogo de estados genéricos (por ejemplo: disponible, vendido) aplicable a diferentes entidades.
+        /// </summary>
         [JsonProperty("id_estado")]
         public long IdEstado { get; set; }
 

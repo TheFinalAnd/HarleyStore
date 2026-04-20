@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.OfferEditPage"
+             Title="Editar oferta">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="18" Spacing="12">
+            <Label Text="Editar oferta" FontSize="20" FontAttributes="Bold" />
+
+            <Label Text="Monto ofertado (unidades)" />
+            <Entry x:Name="PrecioEntry" Keyboard="Numeric" />
+
+            <HorizontalStackLayout VerticalOptions="Center" Spacing="8">
+                <Label Text="Solicitar cuotas" VerticalOptions="Center" />
+                <Switch x:Name="SolicitaCuotasSwitch" Toggled="OnSolicitaCuotasToggled" />
+            </HorizontalStackLayout>
+
+            <Label Text="Cantidad de cuotas" />
+            <Entry x:Name="CantidadCuotasEntry" Keyboard="Numeric" Placeholder="Ej. 12" IsEnabled="False" />
+
+            <Label Text="Prima (unidades)" />
+            <Entry x:Name="PrimaEntry" Keyboard="Numeric" />
+
+            <Label Text="Interés por cuota (%)" />
+            <Entry x:Name="InteresEntry" IsEnabled="False" />
+
+            <Button Text="Guardar" Clicked="OnGuardarClicked" Style="{StaticResource PrimaryButtonStyle}" />
+            <Button Text="Cancelar" Clicked="OnCancelarClicked" BackgroundColor="#444444" TextColor="White" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

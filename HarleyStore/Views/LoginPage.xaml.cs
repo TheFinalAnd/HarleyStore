@@ -8,6 +8,10 @@ namespace HarleyStore.Views
         private readonly CryptoService _cryptoService;
         private readonly SessionService _sessionService;
 
+        /// <summary>
+        /// Constructor inyectado por DI. Evitar lógica pesada en el constructor;
+        /// usar OnAppearing para inicializaciones asíncronas.
+        /// </summary>
         public LoginPage(SupabaseService supabaseService, CryptoService cryptoService, SessionService sessionService)
         {
             InitializeComponent();
@@ -62,7 +66,7 @@ namespace HarleyStore.Views
                     return;
                 }
 
-                _sessionService.SetUsuario(usuario);
+                await _sessionService.SetUsuarioAsync(usuario);
                 await Shell.Current.GoToAsync("//home");
             }
             catch (Exception ex)

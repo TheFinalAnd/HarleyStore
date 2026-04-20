@@ -1,0 +1,117 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:HarleyStore.Models"
+             x:Class="HarleyStore.Views.MyPaymentsPage"
+             Title="Mis pagos"
+             BackgroundColor="#111111">
+
+	<ScrollView>
+		<VerticalStackLayout Padding="12" Spacing="12">
+			<Label Text="Mis pagos"
+                   TextColor="White"
+                   FontSize="24"
+                   FontAttributes="Bold" />
+
+			<Frame BackgroundColor="#1A1A1A" Padding="12" CornerRadius="10">
+				<VerticalStackLayout Spacing="10">
+					<Label Text="Registrar pago"
+                           TextColor="White"
+                           FontAttributes="Bold" />
+
+					<Label Text="Oferta aceptada"
+                           TextColor="#CCCCCC" />
+
+					<Picker x:Name="OfertaPagoPicker"
+                            Title="Selecciona una oferta"
+                            TitleColor="#AAAAAA"
+                            TextColor="White"
+                            BackgroundColor="#2E2E2E"
+                            SelectedIndexChanged="OnOfertaPagoChanged"
+                            ItemDisplayBinding="{Binding MotoNombre}" />
+
+					<Label Text="Monto (unidades)"
+                           TextColor="#CCCCCC" />
+
+					<Entry x:Name="MontoPagoEntry"
+                           Keyboard="Numeric" />
+
+					<Button Text="Registrar pago"
+                            Style="{StaticResource PrimaryButtonStyle}"
+                            Clicked="OnAgregarClicked" />
+				</VerticalStackLayout>
+			</Frame>
+
+			<Label Text="Pagos que hice" TextColor="#CCCCCC" />
+
+			<CollectionView x:Name="PagosQueHiceCollection"
+                            SelectionMode="Single"
+                            SelectionChanged="OnPagoSeleccionado">
+				<CollectionView.ItemTemplate>
+					<DataTemplate x:DataType="models:AbonoViewModel">
+						<Frame Padding="8" CornerRadius="8" Margin="0,6" BackgroundColor="#1A1A1A">
+							<HorizontalStackLayout Spacing="8">
+								<Image Source="{Binding MotoPreview}"
+                                       WidthRequest="80"
+                                       HeightRequest="60"
+                                       Aspect="AspectFill" />
+
+								<VerticalStackLayout HorizontalOptions="FillAndExpand">
+									<Label Text="{Binding MotoNombre}"
+                                           TextColor="White"
+                                           FontAttributes="Bold" />
+
+									<Label Text="{Binding Monto, StringFormat='{0:C}'}"
+                                           TextColor="#CCCCCC" />
+
+									<Label Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}"
+                                           TextColor="#CCCCCC" />
+
+									<Label Text="{Binding EstadoTexto}"
+                                           TextColor="{Binding EstadoColor}"
+                                           FontAttributes="Bold"
+                                           FontSize="12" />
+								</VerticalStackLayout>
+							</HorizontalStackLayout>
+						</Frame>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+
+			<Label Text="Pagos que recibí" TextColor="#CCCCCC" />
+
+			<CollectionView x:Name="PagosRecibidosCollection"
+                            SelectionMode="Single"
+                            SelectionChanged="OnPagoRecibidoSeleccionado">
+				<CollectionView.ItemTemplate>
+					<DataTemplate x:DataType="models:AbonoViewModel">
+						<Frame Padding="8" CornerRadius="8" Margin="0,6" BackgroundColor="#1A1A1A">
+							<HorizontalStackLayout Spacing="8">
+								<Image Source="{Binding MotoPreview}"
+                                       WidthRequest="80"
+                                       HeightRequest="60"
+                                       Aspect="AspectFill" />
+
+								<VerticalStackLayout HorizontalOptions="FillAndExpand">
+									<Label Text="{Binding MotoNombre}"
+                                           TextColor="White"
+                                           FontAttributes="Bold" />
+
+									<Label Text="{Binding Monto, StringFormat='{0:C}'}"
+                                           TextColor="#CCCCCC" />
+
+									<Label Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}"
+                                           TextColor="#CCCCCC" />
+
+									<Label Text="{Binding EstadoTexto}"
+                                           TextColor="{Binding EstadoColor}"
+                                           FontAttributes="Bold"
+                                           FontSize="12" />
+								</VerticalStackLayout>
+							</HorizontalStackLayout>
+						</Frame>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>

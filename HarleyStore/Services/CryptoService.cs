@@ -7,6 +7,16 @@ namespace HarleyStore.Services
 {
     public class CryptoService
     {
+        /// <summary>
+        /// Calcula el hash SHA-256 de una cadena y devuelve su representación hexadecimal en minúsculas.
+        /// </summary>
+        /// <remarks>
+        /// - Uso previsto: almacenamiento/validación de contraseñas en la API externa.
+        /// - Considerar usar PBKDF2/Argon2/scrypt con salt por seguridad en contraseñas
+        ///   si la aplicación llegara a gestionar contraseñas en producción.
+        /// </remarks>
+        /// <param name="texto">Texto de entrada.</param>
+        /// <returns>Hex string del hash SHA-256.</returns>
         public string ToSha256(string texto)
         {
             using var sha = SHA256.Create();

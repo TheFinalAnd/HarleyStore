@@ -7,6 +7,9 @@ namespace HarleyStore.Models
 {
     public class Motor
     {
+        /// <summary>
+        /// Datos técnicos del motor asociados a un modelo (puede ser nulo si no se expande).
+        /// </summary>
         [JsonProperty("id_motor")]
         public long IdMotor { get; set; }
 

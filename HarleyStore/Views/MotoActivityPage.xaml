@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HarleyStore.Views.MotoActivityPage"
+             Title="Actividad por moto">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="12" Spacing="16">
+            <Label Text="Ofertas recibidas" FontAttributes="Bold" />
+            <CollectionView x:Name="ReceivedOffersCollectionView" HeightRequest="140">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="8" Margin="4">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding PrecioOfertado, StringFormat='{0:C}'}" />
+                                <Label Text="{Binding Fecha, StringFormat='{0:yyyy-MM-dd}'}" FontSize="12" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="Pagos recibidos" FontAttributes="Bold" />
+            <CollectionView x:Name="ReceivedPaymentsCollectionView" HeightRequest="140">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="8" Margin="4">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Monto, StringFormat='{0:C}'}" />
+                                <Label Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}" FontSize="12" />
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="Mis ofertas" FontAttributes="Bold" />
+            <CollectionView x:Name="MyOffersCollectionView" HeightRequest="140">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="8" Margin="4">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding PrecioOfertado, StringFormat='{0:C}'}" />
+                                <Label Text="{Binding Fecha, StringFormat='{0:yyyy-MM-dd}'}" FontSize="12" />
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Label Text="Mis pagos" FontAttributes="Bold" />
+            <CollectionView x:Name="MyPaymentsCollectionView" HeightRequest="140">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Padding="8" Margin="4">
+                            <HorizontalStackLayout>
+                                <Label Text="{Binding Monto, StringFormat='{0:C}'}" />
+                                <Label Text="{Binding Date, StringFormat='{0:yyyy-MM-dd}'}" FontSize="12" />
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -7,6 +7,9 @@ namespace HarleyStore.Models
 {
     public class Favorito
     {
+        /// <summary>
+        /// Relación simple entre usuario y moto que indica interés (favorito).
+        /// </summary>
         [JsonProperty("id_usuario")]
         public long IdUsuario { get; set; }
 
