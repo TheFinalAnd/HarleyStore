@@ -63,7 +63,7 @@ public partial class MyOffersPage : ContentPage
                 subject = "¡Tu pago ha sido aprobado!",
                 html = $@"
                 <h1>¡Pago Aprobado!</h1>
-                <p>Tu pago de <strong>${monto:N2}</strong> por la moto <strong>{motoNombre}</strong> ha sido aprobado exitosamente.</p>
+                <p>Tu pago de <strong>${monto*1000:N2}</strong> por la moto <strong>{motoNombre}</strong> ha sido aprobado exitosamente.</p>
                 <p>Gracias por tu confianza en HarleyStore.</p>"
             };
 

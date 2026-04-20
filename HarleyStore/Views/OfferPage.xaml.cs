@@ -191,7 +191,7 @@ public partial class OfferPage : ContentPage, IQueryAttributable
                         <th style='text-align: left; padding: 8px;'>Concepto</th>
                         <th style='text-align: left; padding: 8px;'>Valor</th>
                     </tr>
-                    <tr><td style='padding: 8px;'>Precio Ofertado</td><td style='padding: 8px;'>${oferta.PrecioOfertado:N2}</td></tr>
+                    <tr><td style='padding: 8px;'>Precio Ofertado</td><td style='padding: 8px;'>${(oferta.PrecioOfertado*1000):N2}</td></tr>
                     <tr><td style='padding: 8px;'>¿Solicita Cuotas?</td><td style='padding: 8px;'>{(oferta.SolicitaCuotas ? "Sí" : "No")}</td></tr>
                     <tr><td style='padding: 8px;'>Cantidad Cuotas</td><td style='padding: 8px;'>{(oferta.CantidadCuotas.HasValue ? oferta.CantidadCuotas.ToString() : "N/A")}</td></tr>
                     <tr><td style='padding: 8px;'>Prima</td><td style='padding: 8px;'>${(oferta.Prima.HasValue ? oferta.Prima.Value.ToString("N2") : "0")}</td></tr>
@@ -206,7 +206,7 @@ public partial class OfferPage : ContentPage, IQueryAttributable
 
             var emailData = new
             {
-                from = "onboarding@resend.dev",
+                from = "andres@arcetest.online",
                 to = new[] { emailDestino },
                 subject = asunto,
                 html = htmlBody

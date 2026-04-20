@@ -162,7 +162,7 @@ public partial class MyPaymentsPage : ContentPage
                 subject = $"Nuevo pago registrado: {motoNombre}",
                 html = $@"
                 <h1>Nuevo pago recibido</h1>
-                <p>Se ha registrado un pago de <strong>${monto:N2}</strong> para la moto <strong>{motoNombre}</strong>.</p>
+                <p>Se ha registrado un pago de <strong>${monto*1000:N2}</strong> para la moto <strong>{motoNombre}</strong>.</p>
                 <p>El sistema ha procesado la transacción correctamente.</p>"
             };
 
