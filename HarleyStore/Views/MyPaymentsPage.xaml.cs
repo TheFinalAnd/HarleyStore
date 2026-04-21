@@ -146,7 +146,6 @@ public partial class MyPaymentsPage : ContentPage
         }
     }
 
-    // Añade esto en MyPaymentsPage.xaml.cs
     private async Task EnviarAvisoPagoRegistrado(decimal monto, string motoNombre, string emailDueno)
     {
         try
@@ -206,9 +205,7 @@ public partial class MyPaymentsPage : ContentPage
 
             if (created)
             {
-                // --- AQUÍ ESTABA EL ERROR: Eliminé el bloque de INotificationService ---
-
-                // Enviamos el correo directamente
+                
                 try
                 {
                     var moto = (await _supabaseService.GetMotosAsync()).FirstOrDefault(m => m.IdMoto == _ofertaSeleccionadaPago.IdMoto);
@@ -217,7 +214,7 @@ public partial class MyPaymentsPage : ContentPage
                         var duenio = await _supabaseService.GetUsuarioByIdAsync(moto.IdUsuario);
                         if (duenio != null)
                         {
-                            // Asegúrate de usar la propiedad correcta (duenio.Email o duenio.Correo)
+                            
                             await EnviarAvisoPagoRegistrado((decimal)cuota.Monto, _ofertaSeleccionadaPago.MotoNombre, duenio.Correo);
                         }
                     }

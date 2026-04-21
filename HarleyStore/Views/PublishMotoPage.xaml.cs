@@ -56,7 +56,7 @@ namespace HarleyStore.Views
                     new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", "re_XAPo228r_Q1zrEjydqxM6SuSNkNA3Xarn");
 
                 // Aquí construimos el cuerpo HTML incluyendo la imagen
-                // Asumimos que moto.FotoUrl contiene la URL pública de la imagen en Supabase
+                // moto.FotoUrl contiene la URL pública de la imagen en Supabase
                 string htmlBody = $@"
             <h1>¡Hola!</h1>
             <p>Tu moto ha sido publicada correctamente en HarleyStore.</p>

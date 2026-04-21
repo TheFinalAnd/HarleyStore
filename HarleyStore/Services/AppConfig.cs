@@ -30,10 +30,10 @@ namespace HarleyStore.Services
         public static string SmtpPassword => Environment.GetEnvironmentVariable("SMTP_PASSWORD") ?? string.Empty;
         public static string SmtpFrom => Environment.GetEnvironmentVariable("SMTP_FROM") ?? string.Empty;
 
-        // Resend API key (for sending emails via Resend). Can be set via RESEND_API_KEY env var.
+        
         public static string ResendApiKey => Environment.GetEnvironmentVariable("RESEND_API_KEY") ?? "re_25Sj7Ga5_F4pmyzWwPG9Eqf9U4MMmhpu4";
 
-        // Test override: route all outgoing emails to this address when set (useful for testing)
+        
         public static string TestEmailOverride => Environment.GetEnvironmentVariable("TEST_EMAIL_OVERRIDE") ?? "andresarceviquez@gmail.com";
 
         public static class ApiConfig

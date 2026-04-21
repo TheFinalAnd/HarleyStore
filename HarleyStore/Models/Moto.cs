@@ -27,7 +27,6 @@ namespace HarleyStore.Models
         [JsonProperty("precio_publicado")]
         public float PrecioPublicado { get; set; }
 
-        // Añade esta línea:
         public float PrecioMostrado => PrecioPublicado * 1000;
 
         [JsonProperty("descripcion")]
@@ -45,7 +44,6 @@ namespace HarleyStore.Models
         [JsonProperty("foto_url")]
         public string? FotoUrl { get; set; }
 
-        // Nuevos campos: prima mínima (almacenada como múltiplo de 1000) e interés mínimo (% por cuota)
         [JsonProperty("min_prima")]
         public float? MinPrima { get; set; }
 

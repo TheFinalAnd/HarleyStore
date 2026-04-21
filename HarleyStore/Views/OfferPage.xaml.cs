@@ -3,7 +3,7 @@ using HarleyStore.Models;
 using HarleyStore.Services;
 using System.Text;
 using System.Text.Json;
-using System.Net.Http.Headers; // Importante para el error del StringContent
+using System.Net.Http.Headers; 
 
 namespace HarleyStore.Views;
 
@@ -174,7 +174,7 @@ public partial class OfferPage : ContentPage, IQueryAttributable
     {
         try
         {
-            // Creamos una estructura HTML clara con CSS inline (para que se vea bien en todos los correos)
+            // Creamos una estructura HTML clara con CSS inline
             string htmlBody = $@"
         <html>
             <body style='font-family: Arial, sans-serif; line-height: 1.6;'>

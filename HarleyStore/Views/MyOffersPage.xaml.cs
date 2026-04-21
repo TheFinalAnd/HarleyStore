@@ -46,8 +46,6 @@ public partial class MyOffersPage : ContentPage
         _selectedOfferVm = null;
         PaymentsCollection.SelectedItem = null;
     }
-
-    // Añade esto en MyOffersPage.xaml.cs
     private async Task EnviarEmailPagoAprobado(string emailCliente, string motoNombre, decimal monto)
     {
         try

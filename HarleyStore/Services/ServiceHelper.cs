@@ -2,7 +2,6 @@
 {
     public static class ServiceHelper
     {
-        // Espacio de nombres del servicio: se recomienda acceder mediante DI siempre que sea posible.
 
         /// <summary>
         /// Proveedor de servicios global utilizado por code-behind que no soporta
